@@ -1,0 +1,1 @@
+& {$(Get-PhysicalDisk | Select *)[0] &&  Get-Disk | foreach { $_ | Get-StorageReliabilityCounter | Format-List } &&  Get-PhysicalDisk | Get-StorageReliabilityCounter | Select-Object -Property DeviceID, Wear, ReadErrorsTotal, ReadErrorsCorrected, WriteErrorsTotal, WriteErrorsUncorrected, Temperature, TemperatureMax | FT} | Out-File -append ~/Desktop/disque.txt]

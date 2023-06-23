@@ -1,0 +1,1 @@
+Get-CimInstance win32_physicalmemory | Select-Object Manufacturer,Banklabel,Configuredclockspeed,Devicelocator,@{Name = 'Capacity';Expression = {"$($_.Capacity / 1gb)" + 'GB'}},Serialnumber | Format-Table -AutoSize | Out-File ~/Desktop/memoire.txt
