@@ -19,7 +19,7 @@ Modules Indispensable Powershell:
 
         Get-bios
         
-        ou
+ ou
         
         
         wmic bios get serialnumber
