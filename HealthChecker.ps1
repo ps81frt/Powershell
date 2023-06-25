@@ -1,4 +1,4 @@
-# powershell en CMD ou ADMIN
+# powershell ou CMD ou ADMIN
 
 # Check des systemes de fichiers
 sfc /scannow
@@ -7,3 +7,4 @@ sfc /scannow
 Dism /Online /Cleanup-Image /ScanHealth
 Dism /Online /Cleanup-Image /CheckHealth
 Dism /Online /Cleanup-Image /RestoreHealth
+Restart-Computer
