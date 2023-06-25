@@ -1,4 +1,4 @@
-Au choix, script PS1 qui execute la commande ou ajout au menu demarrer de raccourçi des script d'execution.
+Au choix, script PS1 qui execute la commande ou ajout au menu demarrer de raccourçi des script d'execution:
                         
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
