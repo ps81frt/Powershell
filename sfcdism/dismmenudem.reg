@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\DismContextMenu] "Icon"="WmiPrvSE.exe" "MUIVerb"="Repair Windows Image" "Position"="Bottom" "SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\DismContextMenu\shell\CheckHealth] "HasLUAShield"="" "MUIVerb"="Check Health of Windows Image"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\DismContextMenu\shell\CheckHealth\command] @="PowerShell -windowstyle hidden -command "Start-Process cmd -ArgumentList '/s,/k, Dism /Online /Cleanup-Image /CheckHealth' -Verb runAs""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\DismContextMenu\shell\RestoreHealth] "HasLUAShield"="" "MUIVerb"="Reparer Image Windows"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\DismContextMenu\shell\RestoreHealth\command] @="PowerShell -windowstyle hidden -command "Start-Process cmd -ArgumentList '/s,/k, Dism /Online /Cleanup-Image /RestoreHealth' -Verb runAs""
