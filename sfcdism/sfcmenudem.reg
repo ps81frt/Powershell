@@ -1,0 +1,11 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\DesktopBackground\Shell\SFCScannow] "Icon"="cmd.exe" "MUIVerb"="SFC /Scannow" "Position"="Bottom" "SubCommands"=""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\SFCScannow\shell\01Scannow] "HasLUAShield"="" "MUIVerb"="Demarrer SFC /Scannow"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\SFCScannow\shell\01Scannow\command] @="PowerShell -windowstyle hidden -command "Start-Process cmd -ArgumentList '/s,/k, sfc.exe /scannow' -Verb runAs""
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\SFCScannow\shell\02ViewLog] "MUIVerb"="View log for SFC"
+
+[HKEY_CLASSES_ROOT\DesktopBackground\shell\SFCScannow\shell\02ViewLog\command] @="PowerShell (Select-String [SR] $env:windir\Logs\CBS\CBS.log -s).Line >"$env:userprofile\Desktop\SFC_LOG.txt""
