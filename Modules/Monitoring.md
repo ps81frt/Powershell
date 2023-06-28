@@ -16,12 +16,15 @@ Imprimante
 Erreur de pilotes.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Enregistrer au format .ps1
-    $DeviceState = Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0
-}
+    Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0}
+    
+Ou Enregistrer au format .ps1
 
-$DevicesInError = foreach($Device in $DeviceState){
- $Errortext = switch($device.ConfigManagerErrorCode){
+
+    $DeviceState = Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0}
+
+    $DevicesInError = foreach($Device in $DeviceState){
+     $Errortext = switch($device.ConfigManagerErrorCode){
     0 {"Ce périphérique ne fonctionne pas normalement."}
     1 {"Ce périphérique est mal configuré."}
     2 {"Windows ne peut pas charger le pilote pour ce périphérique."}
@@ -54,19 +57,20 @@ $DevicesInError = foreach($Device in $DeviceState){
     29 {"Cet appareil est désactivé car le micrologiciel de l'appareil ne lui a pas donné les ressources requises."}
     30 {"Ce périphérique utilise une ressource de demande d'interruption (IRQ) qu'un autre périphérique utilise."}
     31 {"Ce périphérique ne fonctionne pas correctement car Windows ne peut pas charger les pilotes requis pour ce périphérique."}
-}
-[PSCustomObject]@{
-ErrorCode = $device.ConfigManagerErrorCode
-ErrorText = $Errortext
-Device = $device.Caption
-Present = $device.Present
-Status = $device.Status
-StatusInfo = $device.StatusInfo
-}
-}
+    }
+    [PSCustomObject]@{
+    ErrorCode = $device.ConfigManagerErrorCode
+    ErrorText = $Errortext
+    Device = $device.Caption
+    Present = $device.Present
+    Status = $device.Status
+    StatusInfo = $device.StatusInfo
+    }
+    }
 
-if(!$DevicesInError){
-write-host "Healthy"
-} else {
-$DevicesInError
-}
+    if(!$DevicesInError){
+    write-host "Healthy"
+    } else {
+    $DevicesInError
+    }
+    
