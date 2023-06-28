@@ -5,6 +5,11 @@ Mise a jours de Powershell
         winget install --id Microsoft.Powershell --source winget
         $PSVersionTable
 
+Mise a jours de Powershell 7
+------------------------------------------------------------------------------------------------------------------------------------------
+
+        iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
+
 
 
 Modules Indispensable Powershell:
