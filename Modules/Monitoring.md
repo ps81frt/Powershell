@@ -73,4 +73,16 @@ Ou Enregistrer au format .ps1
     } else {
     $DevicesInError
     }
+
+
+Disque avec smartctl.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    Invoke-WebRequest -Uri https://github.com/smartmontools/smartmontools/releases/download/RELEASE_7_3/smartmontools-7.3-1.win32-setup.exe  -OutFile smartmontools-7.3-1.win32-setup.exe ; smartmontools-7.3-1.win32-setup.exe
     
+    smartctl.exe --scan
+
+Exemple pour /dev/sda:
+
+    smartctl.exe -iHAl error /dev/sda
+
