@@ -5,7 +5,7 @@ $Path = ‘C’ + ‘:\$Recycle.Bin’
 Get-ChildItem $Path -Force -Recurse  |
 
 
-# Remove-Item -Recurse -Exclude *.ini 
+<#Remove-Item -Recurse -Exclude *.ini #> 
 
 
 write-Host “Toutes les données nécessaires supprimées de la corbeille avec succès” -ForegroundColor Green  
