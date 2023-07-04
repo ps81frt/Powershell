@@ -12,15 +12,16 @@
 # Installe les Mise a jours.
 
     Install-WindowsUpdate
-# Installe les Mise a jours et redemarre.
+
+# Installe les Mise a jours et redemarre automatiquement.
     
     Get-WindowsUpdate -AcceptAll -Install -AutoReboot
 
-# Installe une mise a jours specifiques.
+# Installe une mise a jours specifiques exemple pour la KB5021233 :
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
-# Mise a jour des pilotes.
+# Mise a jour des pilotes avec Windows update.
 
     Get-WindowsDriver -Online -All
 
