@@ -1,7 +1,7 @@
 # Faire ces mise a jour en ligne de commande. ( Windows 11 * )
 -----------------------------------------------------------------------------------------------
 
-# Ouvrir Powershell ou Terminal en tant que administrateur
+# Ouvrir Powershell ou Terminal en tant que administrateur et installer le module.
 
     Install-Module PSWindowsUpdate
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
