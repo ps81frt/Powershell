@@ -20,5 +20,9 @@
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
+# Mise a jour des pilotes.
+
+    Get-WindowsDriver -Online -All
+
     
     
