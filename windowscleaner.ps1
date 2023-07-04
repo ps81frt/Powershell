@@ -1,14 +1,18 @@
-# Fichier temporaire.
 
 $Path = ‘C’ + ‘:\$Recycle.Bin’
 
+
 Get-ChildItem $Path -Force -Recurse  |
+
 
 Remove-Item -Recurse -Exclude *.ini 
 
+
 write-Host “Toutes les données nécessaires supprimées de la corbeille avec succès” -ForegroundColor Green  
 
+
 write-Host “Effacement des fichiers temporaires de divers emplacements” -ForegroundColor Yellow  
+
    
 $tempfolders = @(“C:\Windows\Temp\*”, “C:\Windows\Prefetch\*”, “C:\Documents and Settings\*\Local Settings\temp\*”, “C:\Users\*\Appdata\Local\Temp\*”)
 Remove-Item $tempfolders -force -recurse -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
@@ -26,6 +30,7 @@ cleanmgr /sagerun:1 /VeryLowDisk /AUTOCLEAN | Out-Null
 Write-Host “$([char]7)” 
 
 write-Host "Nettoyage du disque effectué avec succès" -ForegroundColor Green
+
 #DISM
 #Premièrement... réparons ce qui est cassé
 dism.exe /Online /Cleanup-Image /RestoreHealth
