@@ -1,37 +1,31 @@
-#Premièrement, je veux définir la variable de la corbeille
-#Le "Namespace(0xA) est défini comme la corbeille.
-#J'ajouterai bientôt un article avec tous les espaces de noms dont vous pourriez avoir besoin.
-$recycleBinShell = New-Object -ComObject Shell.Application
-$recycleBinFolder = $recycleBinShell.Namespace(0xA)
+# Fichier temporaire.
 
-#Deuxièmement, je veux définir le dossier %temp% (AppData\Local\Temp).
-$tempFilesENV = Get-ChildItem "env:\TEMP"
-$tempFiles = $tempFilesENV.Value
+$Path = ‘C’ + ‘:\$Recycle.Bin’
 
-#Troisièmement, je veux définir le répertoire Windows Temp
-$windowsTemp = "C:\Windows\Temp\*"
+Get-ChildItem $Path -Force -Recurse  |
 
-#Enfin, je souhaite définir le dossier de distribution de logiciels Windows
-$winDist = "C:\Windows\SoftwareDistribution"
+Remove-Item -Recurse -Exclude *.ini 
 
-#Maintenant la magie commence
+write-Host “Toutes les données nécessaires supprimées de la corbeille avec succès” -ForegroundColor Green  
 
-#Retirer les éléments de la corbeille
-$recycleBinFolder.item() | %{Remove-Item $_.path -Recurse -Confirm :$false}
+write-Host “Effacement des fichiers temporaires de divers emplacements” -ForegroundColor Yellow  
+   
+$tempfolders = @(“C:\Windows\Temp\*”, “C:\Windows\Prefetch\*”, “C:\Documents and Settings\*\Local Settings\temp\*”, “C:\Users\*\Appdata\Local\Temp\*”)
+Remove-Item $tempfolders -force -recurse -ErrorAction SilentlyContinue | Remove-Item -Recurse -Force -ErrorAction SilentlyContinue
+   
+Write-Host “$([char]7)” 
 
-#Supprimez les fichiers temporaires dans AppData\Local\Temp
-Remove-Item -Recure "$tempFiles\*"
-
-#Supprimer les anciennes mises à jour Windows
-#Remarque : En supprimant ceci, vous perdrez l'historique des mises à jour et cela pourrait
-#retéléchargez tout à la prochaine mise à jour si vous ne l'avez pas déjà installé
-Get-Service -Name WUAUSERV | Stop-Service
-Remove-Item -Path $winDist -Recurse -Force
-Get-Service -Name WUAUSERV | Start-Service
+write-Host “suppression de tous les fichiers temporaires effectuer avec succès” -ForegroundColor Green 
 
 #Outil de nettoyage de disque
+
+write-Host “Utilisation de l'outil de nettoyage de disque” -ForegroundColor Yellow  
+
 cleanmgr /sagerun:1 /VeryLowDisk /AUTOCLEAN | Out-Null
 
+Write-Host “$([char]7)” 
+
+write-Host "Nettoyage du disque effectué avec succès" -ForegroundColor Green
 #DISM
 #Premièrement... réparons ce qui est cassé
 dism.exe /Online /Cleanup-Image /RestoreHealth
@@ -44,3 +38,7 @@ dism.exe /Online /Cleanup-Image /StartComponentCleanup
 
 #Supprimer les fichiers inutiles remplacés
 dism.exe /Online /Cleanup-Image /SPSuperseded
+
+Write-Host “$([char]7)” 
+
+Write-Host " Votre ordinateur a etais nettoyer avec succès" -ForegroundColor Green
