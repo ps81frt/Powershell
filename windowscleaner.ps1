@@ -8,10 +8,10 @@ Get-ChildItem $Path -Force -Recurse  |
 # Remove-Item -Recurse -Exclude *.ini 
 
 
-write-Host “Toutes les données nécessaires supprimées de la corbeille avec succès” -ForegroundColor Green  
+Write-Host “Toutes les données nécessaires supprimées de la corbeille avec succès” -ForegroundColor Green  
 
 
-write-Host “Effacement des fichiers temporaires de divers emplacements” -ForegroundColor Yellow  
+Write-Host “Effacement des fichiers temporaires de divers emplacements” -ForegroundColor Yellow  
 
    
 $tempfolders = @(“C:\Windows\Temp\*”, “C:\Windows\Prefetch\*”, “C:\Documents and Settings\*\Local Settings\temp\*”, “C:\Users\*\Appdata\Local\Temp\*”)
@@ -19,17 +19,17 @@ Remove-Item $tempfolders -force -recurse -ErrorAction SilentlyContinue | Remove-
    
 Write-Host “$([char]7)” 
 
-write-Host “suppression de tous les fichiers temporaires effectuer avec succès” -ForegroundColor Green 
+Write-Host “suppression de tous les fichiers temporaires effectuer avec succès” -ForegroundColor Green 
 
 #Outil de nettoyage de disque
 
-write-Host “Utilisation de l'outil de nettoyage de disque” -ForegroundColor Yellow  
+Write-Host “Utilisation de l'outil de nettoyage de disque” -ForegroundColor Yellow  
 
 cleanmgr /sagerun:1 /VeryLowDisk /AUTOCLEAN | Out-Null
 
 Write-Host “$([char]7)” 
 
-write-Host "Nettoyage du disque effectué avec succès" -ForegroundColor Green
+Write-Host "Nettoyage du disque effectué avec succès" -ForegroundColor Green
 
 #DISM
 #Premièrement... réparons ce qui est cassé
