@@ -7,6 +7,9 @@
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
     Import-Module PSWindowsUpdate
     Get-Command -Module PSWindowsUpdate
+
+# Recherche des mise à jour disponible.
+
     Get-WindowsUpdate
 
 # Installe les Mise a jours.
