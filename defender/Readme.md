@@ -1,3 +1,8 @@
+Installation du module Windows Defender 
+-------------------------------------------------------------
+   Install-Module -Name WindowsDefender
+
+
 Detection De Microsoft Windows Defender
 ------------------------------------------------------------
 
