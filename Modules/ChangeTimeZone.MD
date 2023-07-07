@@ -9,7 +9,7 @@ Listes des TZ disponnible
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     Get-TimeZone -ListAvailable
 
-ou pour une vue + humaine
+ou pour une vue fenetrer
 
     Get-TimeZone -ListAvailable | Out-GridView
 
