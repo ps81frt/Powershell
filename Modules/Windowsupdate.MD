@@ -1,4 +1,4 @@
-# Faire ces mise a jour en ligne de commande. ( Windows 11 * )
+# Faire ces mise a jour en ligne de commande. ( Windows 10 & 11 * )
 -----------------------------------------------------------------------------------------------
 
 # Ouvrir Powershell ou Terminal en tant que administrateur et installer le module.
