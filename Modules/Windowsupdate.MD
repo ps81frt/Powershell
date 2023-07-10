@@ -18,6 +18,7 @@
 
 # 4. Installe les Mise a jours et redemarre automatiquement.
     
+    Get-WindowsUpdate 
     Get-WindowsUpdate -AcceptAll -Install -AutoReboot
 
 # Installe une mise a jours specifiques exemple pour la KB5021233 :
