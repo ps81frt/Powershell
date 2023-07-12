@@ -1,4 +1,4 @@
-mode 33, 4
+mode 33, 10
 @echo off
 :: BatchGotAdmin
 :-------------------------------------
@@ -22,16 +22,41 @@ if '%errorlevel%' NEQ '0' (
 
 :gotAdmin
 color a
+echo   -----------------------------
+echo        Suppresion Cookies
+echo   -----------------------------
+
+::@echo off
+
+::taskkill /im "firefox.exe"
+
+::set DataDir=C:\Users\%USERNAME%\AppData\Local\Mozilla\Firefox\Profiles
+
+::del /q /s /f "%DataDir%"
+
+::rd /s /q "%DataDir%"
+
+::for /d %%x in (C:\Users\%USERNAME%\AppData\Roaming\Mozilla\Firefox\Profiles\*) do del /q /s /f %%x\*sqlite
+
+::@echo off
+
+::set ChromeDir=C:\Users\%USERNAME%\AppData\Local\Google\Chrome\User Data
+
+::del /q /s /f "%ChromeDir%"
+
+::rd /s /q "%ChromeDir%"
 
 net session >nul 2>&1
 if %errorLevel% == 0 (
     @RD /S /Q "C:\Windows\Temp"
     @RD /S /Q "C:\Windows\Prefetch"
     @RD /S /Q "%userprofile%\AppData\Local\Temp"
-	@RD /S /Q "C:\$Recycle.Bin" 
-    cls
+	@RD /S /Q "C:\$Recycle.Bin"
+
+
+cls
 echo   -----------------------------
-echo        Nettoyage terminer 
+echo        Nettoyage terminer
 echo   -----------------------------
 ping localhost -n 3 >nul
     exit
