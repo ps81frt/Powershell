@@ -51,7 +51,7 @@ if %errorLevel% == 0 (
     @RD /S /Q "C:\Windows\Temp"
     @RD /S /Q "C:\Windows\Prefetch"
     @RD /S /Q "%userprofile%\AppData\Local\Temp"
-	@RD /S /Q "C:\$Recycle.Bin"
+    @RD /S /Q "C:\$Recycle.Bin"
 
 
 cls
