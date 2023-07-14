@@ -56,9 +56,17 @@ Status des services
 
 Status des fonctionnalité active ou pas
 ------------------------------------------------------------
-
-	Get-MpComputerStatus | Select-Object -Property 		 Antivirusenabled,AMServiceEnabled,AntispywareEnabled,BehaviorMonitorEnabled,IoavProtectionEnabled,NISEnabled,OnAccessProtectionEnabled,RealTimeProtectionEnabled,IsTamperProtected,AntivirusSignatureLastUpdated
+	Get-MpComputerStatus | Select-Object -Property Antivirusenabled,AMServiceEnabled,AntispywareEnabled,BehaviorMonitorEnabled,IoavProtectionEnabled,NISEnabled,OnAccessProtectionEnabled,RealTimeProtectionEnabled,IsTamperProtected,AntivirusSignatureLastUpdated
 
  
+ ![status](https://github.com/ps81frt/Powershell/assets/32146568/c0c11a42-fae4-49f6-9771-083c2ee1ae13)
+
+Desactiver la Protection en temp réel, prend effet au redemarrage du systeme
+------------------------------------------------------------
+
+ 	Set-MpPreference -DisableRealtimeMonitoring $true
+  
+
+
 
 
