@@ -36,3 +36,29 @@ Scan hors-ligne Windows Defender
 
 
 	Start-MpWDOScan
+.
+
+------------------------------------------------------------
+------------------------------------------------------------
+------------------------------------------------------------
+Status et desactivation de Defender.
+------------------------------------------------------------
+
+Lister les Commandes
+------------------------------------------------------------
+
+ 	Get-Command -Module Defender
+
+Status des services
+------------------------------------------------------------
+	
+ 	Get-Service Windefend, SecurityHealthService, wscsvc| Select Name,DisplayName, Status
+
+Status des fonctionnalité active ou pas
+------------------------------------------------------------
+
+	Get-MpComputerStatus | Select-Object -Property 		 Antivirusenabled,AMServiceEnabled,AntispywareEnabled,BehaviorMonitorEnabled,IoavProtectionEnabled,NISEnabled,OnAccessProtectionEnabled,RealTimeProtectionEnabled,IsTamperProtected,AntivirusSignatureLastUpdated
+
+ 
+
+
