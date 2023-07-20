@@ -25,6 +25,10 @@
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
+# Historiques des mise a jours.
+
+    Get-WUHistory -MaxDate (Get-Date).AddDays(-30) -Last 100
+
 # List Pilotes.
 
     Get-WindowsDriver -Online -All
