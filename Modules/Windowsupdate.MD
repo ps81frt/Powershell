@@ -29,7 +29,7 @@
 
     Get-WUHistory -MaxDate (Get-Date).AddDays(-30) -Last 100
 
-# List Pilotes.
+# List Pilotes.(powershell admin)
 
     Get-WindowsDriver -Online -All
 
