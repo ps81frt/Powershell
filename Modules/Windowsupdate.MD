@@ -4,7 +4,7 @@
 # 1. Ouvrir Powershell ou Terminal en tant que administrateur et installer le module.
 
     Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted
-    Install-Module -name PSWindowsUpdate
+    Install-Module -Name PSWindowsUpdate
     Import-Module PSWindowsUpdate
     Get-Command -Module PSWindowsUpdate
 
