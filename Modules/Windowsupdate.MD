@@ -1,3 +1,4 @@
+# A executer avec powershell 7 pour compatibilité des commandes.
 # Faire ces mise a jour en ligne de commande. ( Windows 10 & 11 * )
 -----------------------------------------------------------------------------------------------
 
