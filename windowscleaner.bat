@@ -53,6 +53,24 @@ if %errorLevel% == 0 (
     @RD /S /Q "%userprofile%\AppData\Local\Temp"
     @RD /S /Q "C:\$Recycle.Bin"
 
+del /s /f /q %WinDir%\Temp\*.*
+del /s /f /q %WinDir%\Prefetch\*.*
+del /s /f /q %Temp%\*.*
+del /s /f /q %AppData%\Temp\*.*
+del /s /f /q %HomePath%\AppData\LocalLow\Temp\*.*
+
+rd /s /q %WinDir%\Temp
+rd /s /q %WinDir%\Prefetch
+rd /s /q %Temp%
+rd /s /q %AppData%\Temp
+rd /s /q %HomePath%\AppData\LocalLow\Temp
+
+md %WinDir%\Temp
+md %WinDir%\Prefetch
+md %Temp%
+md %AppData%\Temp
+md %HomePath%\AppData\LocalLow\Temp
+
 
 cls
 echo   -----------------------------
