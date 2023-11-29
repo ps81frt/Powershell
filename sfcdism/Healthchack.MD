@@ -1,7 +1,5 @@
 
 
-# Ouvrir Powershell en administrateur
-
 ---------------------------------------------------------------------
 
 # powershell ou CMD ou ADMIN
