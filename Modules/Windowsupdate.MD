@@ -22,7 +22,7 @@
     Get-WindowsUpdate 
     Get-WindowsUpdate -AcceptAll -Install -AutoReboot
 
-# Installe une mise a jours specifiques exemple pour la KB5021233 :
+# Bonus Installe une mise a jours specifiques exemple pour la KB5021233 :
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
