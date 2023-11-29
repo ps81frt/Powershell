@@ -6,11 +6,11 @@
 
 ---------------------------------------------------------------------
 
-# Check des systemes de fichiers
+# Check des systemes de fichiers, entrer le commandes ci-dessous.
 
 sfc /scannow
 
-# DISM
+# DISM commande ci-dessous.
 
 Dism /Online /Cleanup-Image /ScanHealth
 Dism /Online /Cleanup-Image /CheckHealth
