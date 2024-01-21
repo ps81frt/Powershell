@@ -19,4 +19,4 @@ dir /OD
 
 # exemple:
 
-wevtutil qe System.evtx /lf:true /f:text /rd:true | more
+wevtutil qe System.evtx /lf:true /f:text /rd:true | more > %UserProfile%\Desktop\eventsystem.txt
