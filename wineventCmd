@@ -1,0 +1,22 @@
+# ouvert cmd administrateur 
+# 
+#
+#
+cd C:\Windows\System32\winevt\Logs
+
+# lister chronologiquement 
+
+dir /OD
+
+# qe – query events
+# /lf – logfile (true because we are # specifying a log file not a log name)
+# /f – format (options are text or xml)
+# /rd – direction (true puts most recent 
+# events first)
+# | more – piping through more enables you # to manually scroll through log.
+
+# wevtutil qe <file> /lf:true /f:text /rd:true | more
+
+# exemple:
+
+wevtutil qe System.evtx /lf:true /f:text /rd:true | more
