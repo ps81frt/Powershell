@@ -138,4 +138,5 @@ function Get-ScreenRefreshRate
 $currentFrequency = Get-ScreenRefreshRate
 $newFrequency     = if ($currentFrequency -eq 40) { 60.01 } else { 60.01 }
 
-Set-ScreenRefreshRate -Frequency $newFrequency
+Set-ScreenRefreshRate -Frequency $newFrequency ;
+Get-ScreenRefreshRate 
