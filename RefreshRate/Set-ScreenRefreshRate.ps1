@@ -5,8 +5,7 @@ function Set-ScreenRefreshRate
         [int] $Frequency
     ) 
 
-[Display.PrimaryScreen]::ChangeRefreshRate($frequency) 
-
+    [Display.PrimaryScreen]::ChangeRefreshRate($frequency) 
 }
 
 function Get-ScreenRefreshRate
