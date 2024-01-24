@@ -1,7 +1,9 @@
 Net Stop WuaUserv
 Net Stop AppIDSVC
 Net Stop Cryptsvc
+
 CD %windir%\system32
+
 regsvr32.exe Actxprxy.dll /s
 regsvr32.exe atl.dll /s
 regsvr32.exe browseui.dll /s
@@ -48,9 +50,14 @@ regsvr32.exe.exe gpkcsp.dll /s
 regsvr32.exe.exe initpki.dll /s
 regsvr32.exe.exe jscript.dll /s
 regsvr32.exe.exe mshtml.dll /s
+
+## MMC
+
 regsvr32.exe.exe msxml.dll /s
 regsvr32.exe.exe msxml3.dll /s
 regsvr32.exe.exe msxml6.dll /s
+
+##
 regsvr32.exe.exe muweb.dll /s
 regsvr32.exe.exe ole32.dll /s
 regsvr32.exe.exe oleaut32.dll /s
