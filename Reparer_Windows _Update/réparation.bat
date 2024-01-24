@@ -21,6 +21,10 @@ if '%errorlevel%' NEQ '0' (
 
 :gotAdmin
 
+echo   -----------------------------
+echo        RESET WINDOWS UPDATE 
+echo   -----------------------------
+
 net stop bits
 net stop wuauserv
 net stop cryptsvc
@@ -80,3 +84,7 @@ net start wuauserv
 net start cryptsvc
 
 bitsadmin.exe /reset /allusers
+
+echo   -----------------------------
+echo            TERMINER
+echo   -----------------------------
