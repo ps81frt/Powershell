@@ -1,1 +1,1 @@
-Get-PnpDevice -class Bluetooth | Export-Csv $env:USERPROFILE\Desktop\bt.csv
+Get-PnpDevice -class Bluetooth | Export-Csv $env:USERPROFILE\Desktop\bt.csv -Delimiter ";" -UseQuotes Always
