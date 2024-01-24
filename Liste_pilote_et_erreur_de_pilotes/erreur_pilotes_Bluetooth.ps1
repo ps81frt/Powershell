@@ -1,0 +1,2 @@
+&{ Get-PnpDevice -Class 'Bluetooth' -PresentOnly | Select-Object -Property Status,Friendlyname,InstanceId && Get-CimInstance Win32_PnPEntity | where caption -match 'Bluet*' | Select-Object Status, Class, FriendlyName, instanceId && get-service -Name 'bthserv' | ft ;
+Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0 } | Select-Object ConfigManagerErrorCode,Errortext,Present,Status,StatusInfo,caption } | Out-File -Append ~\Desktop\Bluetooth.txt
