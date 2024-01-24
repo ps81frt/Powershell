@@ -1,0 +1,2 @@
+Write-Host "100 dernier evenement du journal system" ; Get-WinEvent -LogName System  -MaxEvents 100 | Select-Object TimeCreated,UserId,ContainerLog,ID,Level,Message,ProviderName,MachineName,TaskDisplayName,ProcessId,RecordId,Version,Task,Keywords | fl| fl | Out-File -FilePath $env:USERPROFILE\Desktop\eventsystem2.txt;
+Get-EventLog -LogName System  -After (Get-Date).AddDays(-4) -EntryType Error, Warning | Select-Object -First 100 | fl | Out-File -FilePath $env:USERPROFILE\Desktop\eventsystem.txt
