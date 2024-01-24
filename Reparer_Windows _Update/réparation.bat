@@ -90,3 +90,10 @@ bitsadmin.exe /reset /allusers
 echo   -----------------------------
 echo            TERMINER
 echo   -----------------------------
+ping localhost -n 3 >nul
+    exit
+) ELSE (
+   echo Demarrer le programme en tant que Administrateur ...
+   PAUSE
+   EXIT
+)
