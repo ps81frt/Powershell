@@ -1,0 +1,95 @@
+Net Stop WuaUserv
+Net Stop AppIDSVC
+Net Stop Cryptsvc
+CD %windir%\system32
+regsvr32.exe Actxprxy.dll /s
+regsvr32.exe atl.dll /s
+regsvr32.exe browseui.dll /s
+regsvr32.exe c :\windows\system32\actxprxy.dll /s
+regsvr32.exe c :\windows\system32\jscript.dll /s
+regsvr32.exe c :\windows\system32\mshtml.dll /s
+regsvr32.exe c :\windows\system32\msjava.dll /s
+regsvr32.exe c :\windows\system32\msxml.dll /s
+regsvr32.exe c :\windows\system32\shdocvw.dll /s
+regsvr32.exe c :\windows\system32\vbscript.dll /s
+regsvr32.exe cryptdlg.dll /s
+regsvr32.exe dssenh.dll /s
+regsvr32.exe gpkcsp.dll /s
+regsvr32.exe initpki.dll /s
+regsvr32.exe jscript.dll /s
+regsvr32.exe mshtml.dll /s
+regsvr32.exe msjava.dll /s
+regsvr32.exe mssip32.dll /s
+regsvr32.exe msxml.dll /s
+regsvr32.exe msxml2.dll /s
+regsvr32.exe msxml3.dll /s
+regsvr32.exe oleaut32.dll /s
+regsvr32.exe rsaenh.dll /s
+regsvr32.exe sccbase.dll /s
+regsvr32.exe shdocvw.dll /s
+regsvr32.exe shell32.dll /s
+regsvr32.exe slbcsp.dll /s
+regsvr32.exe softpub.dll /s
+regsvr32.exe urlmon.dll /s
+regsvr32.exe wintrust.dll /s
+regsvr32.exe wuapi.dll /s
+regsvr32.exe wuaueng.dll /s
+regsvr32.exe wuaueng1.dll /s
+regsvr32.exe wucltui.dll /s
+regsvr32.exe wups.dll /s
+regsvr32.exe wups2.dll /s
+regsvr32.exe wuweb.dll /s
+regsvr32.exe.exe actxprxy.dll /s
+regsvr32.exe.exe atl.dll /s
+regsvr32.exe.exe browseui.dll /s
+regsvr32.exe.exe cryptdlg.dll /s
+regsvr32.exe.exe dssenh.dll /s
+regsvr32.exe.exe gpkcsp.dll /s
+regsvr32.exe.exe initpki.dll /s
+regsvr32.exe.exe jscript.dll /s
+regsvr32.exe.exe mshtml.dll /s
+regsvr32.exe.exe msxml.dll /s
+regsvr32.exe.exe msxml3.dll /s
+regsvr32.exe.exe msxml6.dll /s
+regsvr32.exe.exe muweb.dll /s
+regsvr32.exe.exe ole32.dll /s
+regsvr32.exe.exe oleaut32.dll /s
+regsvr32.exe.exe qmgr.dll /s
+regsvr32.exe.exe qmgrprxy.dll /s
+regsvr32.exe.exe rsaenh.dll /s
+regsvr32.exe.exe sccbase.dll /s
+regsvr32.exe.exe scrrun.dll /s
+regsvr32.exe.exe shdocvw.dll /s
+regsvr32.exe.exe shell32.dll /s
+regsvr32.exe.exe slbcsp.dll /s
+regsvr32.exe.exe pub douce.dll /s
+regsvr32.exe.exe urlmon.dll /s
+regsvr32.exe.exe vbscript.dll /s
+regsvr32.exe.exe wintrust.dll /s
+regsvr32.exe.exe wuapi.dll /s
+regsvr32.exe.exe wuaueng.dll /s
+regsvr32.exe.exe wuaueng1.dll /s
+regsvr32.exe.exe wucltui.dll /s
+regsvr32.exe.exe wucltux.dll /s
+regsvr32.exe.exe wups.dll /s
+regsvr32.exe.exe wups2.dll /s
+regsvr32.exe.exe wuweb.dll /s
+regsvr32.exe.exe wuwebv.dll /s
+
+netsh winhttp 
+Net Start WuaUserv
+
+Net Start Cryptsvc
+Net Start AppIDSVC
+
+SFC /Scannow
+
+Dism.exe /Online /Cleanup-Image /ScanHealth
+
+dism.exe /en ligne /cleanup-image /checkhealth
+
+Dism.exe /Online /Cleanup-Image /RestoreHealth
+
+Dism.exe /Online /Cleanup-Image /StartComponentCleanup
+
+SFC /Scannow
