@@ -1,0 +1,1 @@
+powershell -command mode 300 ; &{Get-WinEvent -FilterHashtable @{logName='System'; Level=1,2,3} -MaxEvents 1000 | where{$_.Message.Length -gt 0 }} | Export-Csv -UseCulture $env:USERPROFILE\Desktop\evsys.csv
