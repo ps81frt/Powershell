@@ -1,4 +1,4 @@
-unction Check-RunAsAdministrator()
+Function Check-RunAsAdministrator()
 {
   #Obtention du contexte utilisateur actuel
   $CurrentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
