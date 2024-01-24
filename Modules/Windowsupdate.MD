@@ -23,10 +23,12 @@
     Get-WindowsUpdate -AcceptAll -Install -AutoReboot
 
 # Bonus Installe une mise a jours specifiques exemple pour la KB5021233 :
+----------------------------
+avec le résultat de la  ommande Get-WindowsUpdate vous aurez le numéro KBxxxxxxx à remplacer exemple ci-dessous.
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
-# Historiques des mise a jours.
+# Historiques des 100 derniere mise a jours des 20 derniers jours.
 
     Get-WUHistory -MaxDate (Get-Date).AddDays(-30) -Last 100
 
