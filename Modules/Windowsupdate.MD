@@ -24,7 +24,7 @@
 
 # Bonus Installe une mise a jours specifiques exemple pour la KB5021233 :
 ----------------------------
-avec le résultat de la  ommande Get-WindowsUpdate vous aurez le numéro KBxxxxxxx à remplacer exemple ci-dessous.
+avec le résultat de la  commande Get-WindowsUpdate vous aurez le numéro KBxxxxxxx à remplacer exemple ci-dessous et entre guillemetsle KBID svp.
 
     Get-WindowsUpdate -Install -KBArticleID 'KB5021233'
 
