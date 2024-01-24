@@ -25,6 +25,8 @@ echo   -----------------------------
 echo        RESET WINDOWS UPDATE 
 echo   -----------------------------
 
+net session >nul 2>&1
+if %errorLevel% == 0 (
 net stop bits
 net stop wuauserv
 net stop cryptsvc
