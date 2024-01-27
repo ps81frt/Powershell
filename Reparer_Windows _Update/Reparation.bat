@@ -3,80 +3,71 @@
 ::# elevate with native shell
 >nul reg add hkcu\software\classes\.Admin\shell\runas\command /f /ve /d "cmd /x /d /r set \"f0=%%2\"& call \"%%2\" %%3"& set _= %*
 >nul fltmc|| if "%f0%" neq "%~f0" (cd.>"%temp%\runas.Admin" & start "%~n0" /high "%temp%\runas.Admin" "%~f0" "%_:"=""%" & exit /b)
+title Reset Windows Update 23H1 part ps81frt
+cls
 
 echo   -----------------------------
 echo        RESET WINDOWS UPDATE 
 echo   -----------------------------
 
-net session >nul 2>&1
-if %errorLevel% == 0 (
+dism /Online /Cleanup-image /Restorehealth 
+Send {Enter}
+sfc /scannow
 net stop bits
 net stop wuauserv
+net stop appidsvc
 net stop cryptsvc
-
-Del "%ALLUSERSPROFILE%\Application Data\Microsoft\Network\Downloader\qmgr*.dat"
-
-Ren %Systemroot%\SoftwareDistribution\DataStore DataStore.bak
-Ren %Systemroot%\SoftwareDistribution\Download Download.bak
-Ren %Systemroot%\System32\catroot2 catroot2.bak
-
-sc.exe sdset bits D:(A;CI;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;IU)(A;;CCLCSWLOCRRC;;;SU)
-sc.exe sdset wuauserv D:(A;;CCLCSWRPLORC;;;AU)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;SY)
-
+echo O | Del "%ALLUSERSPROFILE%\Application Data\Microsoft\Network\Downloader\*.*"
+rmdir %systemroot%\SoftwareDistribution /S /Q
+rmdir %systemroot%\system32\catroot2 /S /Q
+sc.exe sdset bits D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;AU)(A;;CCLCSWRPWPDTLOCRRC;;;PU)
+sc.exe sdset wuauserv D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;AU)(A;;CCLCSWRPWPDTLOCRRC;;;PU)
 cd /d %windir%\system32
-
-regsvr32.exe atl.dll
-regsvr32.exe urlmon.dll
-regsvr32.exe mshtml.dll
-regsvr32.exe shdocvw.dll
-regsvr32.exe browseui.dll
-regsvr32.exe jscript.dll
-regsvr32.exe vbscript.dll
-regsvr32.exe scrrun.dll
-regsvr32.exe msxml.dll
-regsvr32.exe msxml3.dll
-regsvr32.exe msxml6.dll
-regsvr32.exe actxprxy.dll
-regsvr32.exe softpub.dll
-regsvr32.exe wintrust.dll
-regsvr32.exe dssenh.dll
-regsvr32.exe rsaenh.dll
-regsvr32.exe gpkcsp.dll
-regsvr32.exe sccbase.dll
-regsvr32.exe slbcsp.dll
-regsvr32.exe cryptdlg.dll
-regsvr32.exe oleaut32.dll
-regsvr32.exe ole32.dll
-regsvr32.exe shell32.dll
-regsvr32.exe initpki.dll
-regsvr32.exe wuapi.dll
-regsvr32.exe wuaueng.dll
-regsvr32.exe wuaueng1.dll
-regsvr32.exe wucltui.dll
-regsvr32.exe wups.dll
-regsvr32.exe wups2.dll
-regsvr32.exe wuweb.dll
-regsvr32.exe qmgr.dll
-regsvr32.exe qmgrprxy.dll
-regsvr32.exe wucltux.dll
-regsvr32.exe muweb.dll
-regsvr32.exe wuwebv.dll
-
+regsvr32.exe /s atl.dll
+regsvr32.exe /s urlmon.dll
+regsvr32.exe /s mshtml.dll
+regsvr32.exe /s shdocvw.dll
+regsvr32.exe /s browseui.dll
+regsvr32.exe /s jscript.dll
+regsvr32.exe /s vbscript.dll
+regsvr32.exe /s scrrun.dll
+regsvr32.exe /s msxml.dll
+regsvr32.exe /s msxml3.dll
+regsvr32.exe /s msxml6.dll
+regsvr32.exe /s actxprxy.dll
+regsvr32.exe /s softpub.dll
+regsvr32.exe /s wintrust.dll
+regsvr32.exe /s dssenh.dll
+regsvr32.exe /s rsaenh.dll
+regsvr32.exe /s gpkcsp.dll
+regsvr32.exe /s sccbase.dll
+regsvr32.exe /s slbcsp.dll
+regsvr32.exe /s cryptdlg.dll
+regsvr32.exe /s oleaut32.dll
+regsvr32.exe /s ole32.dll
+regsvr32.exe /s shell32.dll
+regsvr32.exe /s initpki.dll
+regsvr32.exe /s wuapi.dll
+regsvr32.exe /s wuaueng.dll
+regsvr32.exe /s wuaueng1.dll
+regsvr32.exe /s wucltui.dll
+regsvr32.exe /s wups.dll
+regsvr32.exe /s wups2.dll
+regsvr32.exe /s wuweb.dll
+regsvr32.exe /s qmgr.dll
+regsvr32.exe /s qmgrprxy.dll
+regsvr32.exe /s wucltux.dll
+regsvr32.exe /s muweb.dll
+regsvr32.exe /s wuwebv.dll
 netsh winsock reset
-
+netsh winsock reset proxy
 net start bits
-net start wuauserv   
+net start wuauserv
+net start appidsvc
 net start cryptsvc
-
-bitsadmin.exe /reset /allusers
-
-echo   -----------------------------
-echo            TERMINER
-echo   -----------------------------
-ping localhost -n 3 >nul
-    exit
-) ELSE (
-   echo Demarrer le programme en tant que Administrateur ...
-   PAUSE
-   EXIT
-)
+timeout /t 5
+echo
+echo
+echo
+echo Votre Ordinateur va redemarrer
+shutdown /r /t 5
