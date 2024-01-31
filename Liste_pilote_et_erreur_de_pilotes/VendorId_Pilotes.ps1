@@ -1,3 +1,5 @@
+# Powershell 5.1
+
 &{wmic path win32_pnpentity where "deviceid like '%PCI%'" get Caption,deviceid,Status,Service,ClassGUID,PNPClass ;
 (gwmi Win32_Bus -Filter 'DeviceID like "PCI%"').GetRelated('Win32_PnPEntity').GetDeviceProperties('DEVPKEY_Device_LocationInfo').deviceProperties | ft data,DeviceID ;
 $Availability = @{
