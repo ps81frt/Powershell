@@ -1,1 +1,1 @@
-Get-WinEvent -FilterHashtable @{ LogName = "Application"; ID = 1033 } | select timecreated,level,message | Select -First 140 | Format-List | Out-File $env:USERPROFILE\Desktop\LogInstallation.txt
+Get-WinEvent -FilterHashtable @{ LogName = "Application"; ID = 1033 } | Where-Object -Property Message -Match Office | select timecreated,level,message | select -First 140 | Format-List | Out-File $env:USERPROFILE\Desktop\LogInstallation.txt
