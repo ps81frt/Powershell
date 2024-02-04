@@ -3,6 +3,7 @@ Mise a jours de Powershell
 
         $PSVersionTable.PSVersion
         winget install --id Microsoft.Powershell --source winget
+        dotnet tool update --global PowerShell
         $PSVersionTable
 
 Mise a jours de Powershell 7
@@ -10,6 +11,7 @@ Mise a jours de Powershell 7
 
         $PSVersionTable.PSVersion
         iex "& { $(irm https://aka.ms/install-powershell.ps1) } -UseMSI"
+        dotnet tool update --global PowerShell
         $PSVersionTable
 
 
