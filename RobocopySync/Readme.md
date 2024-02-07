@@ -9,6 +9,10 @@
 -------------------------------------------------
 ## Explication Commande détaillés
 -------------------------------------------------
+
+/MIR
+-  met en MIRoir une arborescence (équivaut à /E plus /PURGE).
+-------------------------------------------------
 /E      
 - Indique qu'il faut copier les sous-répertoires, même les vides
 -------------------------------------------------
