@@ -24,5 +24,13 @@
 /XN     eXclut les fichiers Nouveaux.
 -------------------------------------------------
 /XO     eXclut les fichiers anciens.
+
+/XD     "System Volume Information" On exclu le répertoires nommé "System Volume Information"qui est un
+        répertoire système que l'on a pas d'intérêt à copier et qui peut en plus
+        générer des erreurs.
+-------------------------------------------------
+
+/XF     "pagefile.sys" On exclu le fichier qui contient la « mémoire virtuelle », il ne présente
+        donc pas d'intérêt sans compter le fait qu'il peut être très volumineux.
 -------------------------------------------------
 /W:n :: délai entre les tentatives : 30 secondes par défaut.
