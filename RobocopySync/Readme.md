@@ -2,7 +2,7 @@
 
 ## Exemple commande.
 
-        robocopy  C:${\textcolor{blue}{SOURCE}}$ D:\[DESTINATION] /e /copy:DAT /mt /z /xc /xn /xo /w:1
+        robocopy  C:$\textcolor{blue}{SOURCE\}$ D:\[DESTINATION] /e /copy:DAT /mt /z /xc /xn /xo /w:1
 
 -------------------------------------------------
         robocopy  C:\Users\SERGIO\Documents\backup\source D:\destination /e /copy:DAT /mt /z /xc /xn /xo /w:1
