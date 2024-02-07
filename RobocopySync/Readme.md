@@ -7,7 +7,8 @@
 -------------------------------------------------
         robocopy  C:\Users\SERGIO\Documents\backup\source D:\destination /e /copy:DAT /mt /z /xc /xn /xo /w:1
 -------------------------------------------------
-/E      Indique qu'il faut copier les sous-répertoires, même les vides
+/E      
+- Indique qu'il faut copier les sous-répertoires, même les vides
 -------------------------------------------------
 /COPY   indicateurscopie :: spécifie les éléments à copier pour les fichiers (/COPY:DAT par défaut).
         indicateurscopie : **D=Données**, **A=Attributs**, **T=Horodatages**, **X=Ignorer** les flux de données Alt (X est ignoré si /B ou /ZB). 
