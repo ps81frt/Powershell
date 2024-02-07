@@ -44,13 +44,17 @@
 
 # cacher le processus sans ouverture de fenêtre
 
+## Creer un fichier .vbs
+
         Set WshShell = CreateObject("WScript.Shell") 
         WshShell.Run chr(34) & **"CHEMIN EXECUTABLE"** & Chr(34), 0
         Set WshShell = Nothing
 -----------------------------------------
+
+
+### Remplacer C:\Users\SERGIO\Documents\backup\source\leScript\BackupRob.bat par le chemin de vôtre fichier .bat ou .exe
+
         Set WshShell = CreateObject("WScript.Shell") 
         WshShell.Run chr(34) & "C:\Users\SERGIO\Documents\backup\source\leScript\BackupRob.bat" & Chr(34), 0
         Set WshShell = Nothing
 -----------------------------------------
-
-### Remplacer C:\Users\SERGIO\Documents\backup\source\leScript\BackupRob.bat par le chemin de vôtre fichier .bat ou .exe
