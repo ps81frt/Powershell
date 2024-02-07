@@ -1,11 +1,13 @@
 # Robocopy synchroniser dossier sur un autre lecteur.
 
-## exemple commande.
+## Exemple commande.
 
         robocopy  C:[SOURCE] D:\[DESTINATION] /e /copy:DAT /mt /z /xc /xn /xo /w:1
 
 -------------------------------------------------
         robocopy  C:\Users\SERGIO\Documents\backup\source D:\destination /e /copy:DAT /mt /z /xc /xn /xo /w:1
+-------------------------------------------------
+## Explication Commande détaillés
 -------------------------------------------------
 /E      
 - Indique qu'il faut copier les sous-répertoires, même les vides
@@ -39,3 +41,16 @@
 -------------------------------------------------
 /W:n
 - délai entre les tentatives : 30 secondes par défaut.
+
+# cacher le processus sans ouverture de fenêtre
+
+        Set WshShell = CreateObject("WScript.Shell") 
+        WshShell.Run chr(34) & **"CHEMIN EXECUTABLE"** & Chr(34), 0
+        Set WshShell = Nothing
+-----------------------------------------
+        Set WshShell = CreateObject("WScript.Shell") 
+        WshShell.Run chr(34) & "C:\Users\SERGIO\Documents\backup\source\leScript\BackupRob.bat" & Chr(34), 0
+        Set WshShell = Nothing
+-----------------------------------------
+
+### Remplacer C:\Users\SERGIO\Documents\backup\source\leScript\BackupRob.bat par le chemin de vôtre fichier .bat ou .exe
