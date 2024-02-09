@@ -7,6 +7,9 @@
 -------------------------------------------------
         robocopy  C:\Users\SERGIO\Documents\backup\source D:\destination /e /copy:DAT /mt /z /xc /xn /xo /w:1
 -------------------------------------------------
+        robocopy  C:\Users\tech\Desktop\test\SOURC E:\DEST /R:2 /w:10 /S /E /COPY:DAT /MT:10 /Z /XO /XC /XD /XF /IM /LOG+:"C:\Users\tech\Desktop\test\backuplogs\log-%date:~0,2%-%date:~3,2%-%date:~6,4%-%time:~0,2%-%time:~3,2%-%time:~6,2%.log" /TEE /NDL
+
+
 - copie simple:
 
         robocopy  C:\test\SOURC C:\test\DEST /R:2 /w:10 /S /E /COPY:DAT /MT:10 /Z /XO /XC /XD /XF /IM
