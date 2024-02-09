@@ -7,6 +7,14 @@
 -------------------------------------------------
         robocopy  C:\Users\SERGIO\Documents\backup\source D:\destination /e /copy:DAT /mt /z /xc /xn /xo /w:1
 -------------------------------------------------
+- copie simple:
+
+        robocopy  C:\test\SOURC C:\test\DEST /R:2 /w:10 /S /E /COPY:DAT /MT:10 /Z /XO /XC /XD /XF /IM
+- copie tous droit et permission des fichier et dossiers.(Doit s'executer en administrateur)
+
+        robocopy  C:\test\SOURC C:\test\DEST /E /ZB /COPYALL /R:10 /W:30
+
+-------------------------------------------------
 ## Explication Commande détaillés
 -------------------------------------------------
 
@@ -45,6 +53,12 @@
 -------------------------------------------------
 /W:n
 - délai entre les tentatives : 30 secondes par défaut.
+-------------------------------------------------
+/R:n
+- Reesaie de copier le le fishier n fois.
+-------------------------------------------------
+/IM
+- Inclure les fichiers modifiés (heures de modification différentes).
 
 # cacher le processus sans ouverture de fenêtre
 
