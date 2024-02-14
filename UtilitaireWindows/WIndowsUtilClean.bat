@@ -37,41 +37,44 @@ goto menu
 
 :menu
 cls
-																									     
-echo                    [40;31m ╔╗╔╗╔╗╔══╗╔═╗ ╔╗╔═══╗╔═══╗╔╗╔╗╔╗╔═══╗ [40;34m   ╔╗ ╔╗╔════╗╔══╗╔╗   ╔══╗╔════╗╔╗  ╔╗  
-echo                    [40;31m ║║║║║║╚╣╠╝║║╚╗║║╚╗╔╗║║╔═╗║║║║║║║║╔═╗║ [40;34m   ║║ ║║║╔╗╔╗║╚╣╠╝║║   ╚╣╠╝║╔╗╔╗║║╚╗╔╝║  
-echo                    [40;31m ║║║║║║ ║║ ║╔╗╚╝║ ║║║║║║ ║║║║║║║║║╚══╗ [40;34m   ║║ ║║╚╝║║╚╝ ║║ ║║    ║║ ╚╝║║╚╝╚╗╚╝╔╝  
-echo                    [40;31m ║╚╝╚╝║ ║║ ║║╚╗║║ ║║║║║║ ║║║╚╝╚╝║╚══╗║ [40;34m   ║║ ║║  ║║   ║║ ║║ ╔╗ ║║   ║║   ╚╗╔╝   
-echo                    [40;31m ╚╗╔╗╔╝╔╣╠╗║║ ║║║╔╝╚╝║║╚═╝║╚╗╔╗╔╝║╚═╝║ [40;34m   ║╚═╝║ ╔╝╚╗ ╔╣╠╗║╚═╝║╔╣╠╗ ╔╝╚╗   ║║    
-echo                    [40;31m  ╚╝╚╝ ╚══╝╚╝ ╚═╝╚═══╝╚═══╝ ╚╝╚╝ ╚═══╝ [40;34m   ╚═══╝ ╚══╝ ╚══╝╚═══╝╚══╝ ╚══╝   ╚╝    
+SetLocal EnableExtensions
+For /F %%G In ('Echo Prompt $E ^| "%__AppDir__%cmd.exe"') Do Set "ESC=%%G"
+cls																						     
+echo                    %ESC%[40;31m ╔╗╔╗╔╗╔══╗╔═╗ ╔╗╔═══╗╔═══╗╔╗╔╗╔╗╔═══╗ %ESC%[40;34m   ╔╗ ╔╗╔════╗╔══╗╔╗   ╔══╗╔════╗╔╗  ╔╗  
+echo                    %ESC%[40;31m ║║║║║║╚╣╠╝║║╚╗║║╚╗╔╗║║╔═╗║║║║║║║║╔═╗║ %ESC%[40;34m   ║║ ║║║╔╗╔╗║╚╣╠╝║║   ╚╣╠╝║╔╗╔╗║║╚╗╔╝║  
+echo                    %ESC%[40;31m ║║║║║║ ║║ ║╔╗╚╝║ ║║║║║║ ║║║║║║║║║╚══╗ %ESC%[40;34m   ║║ ║║╚╝║║╚╝ ║║ ║║    ║║ ╚╝║║╚╝╚╗╚╝╔╝  
+echo                    %ESC%[40;31m ║╚╝╚╝║ ║║ ║║╚╗║║ ║║║║║║ ║║║╚╝╚╝║╚══╗║ %ESC%[40;34m   ║║ ║║  ║║   ║║ ║║ ╔╗ ║║   ║║   ╚╗╔╝   
+echo                    %ESC%[40;31m ╚╗╔╗╔╝╔╣╠╗║║ ║║║╔╝╚╝║║╚═╝║╚╗╔╗╔╝║╚═╝║ %ESC%[40;34m   ║╚═╝║ ╔╝╚╗ ╔╣╠╗║╚═╝║╔╣╠╗ ╔╝╚╗   ║║    
+echo                    %ESC%[40;31m  ╚╝╚╝ ╚══╝╚╝ ╚═╝╚═══╝╚═══╝ ╚╝╚╝ ╚═══╝ %ESC%[40;34m   ╚═══╝ ╚══╝ ╚══╝╚═══╝╚══╝ ╚══╝   ╚╝    
 echo.
 echo.
-echo                                          [40;33m ╔═════════════════════════════════╗
-echo                                          [40;33m ║ Utilitaire de Nettoyage Windows ║                                              
-echo                                          [40;33m ╚═════════════════════════════════╝    
+echo                                          %ESC%[40;33m╔═════════════════════════════════╗
+echo                                          %ESC%[40;33m║ Utilitaire de Nettoyage Windows ║                                            
+echo                                          %ESC%[40;33m╚═════════════════════════════════╝
 echo.
 echo.
-title Lanceur Windows Cleaner %ver% par ps81frt  
+title Windows Utility %ver% par ps81frt  
 echo.
-echo  [40;32m Appuyez sur un bouton de 1 à 5 - chacun de ces boutons a sa propre fonction comme decrit ci-dessous :
+echo  Appuyez sur un bouton de 1 à 5 - chacun de ces boutons a sa propre fonction comme decrit ci-dessous :
 echo. 
 echo ══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════
 echo.
-echo  1 - Nettoyage et Suppression en profondeur des Fichier Temporaires
 echo.
-echo  2 -[40;31m Nettoyage Complet et Suppression des Fichier Temporaires et Donnees Profil Navigateur (RESET) !!!!!!!!!! [40;32m
+echo  %ESC%[0;32m 1 - Nettoyage et Suppression en profondeur des Fichier Temporaires
 echo.
-echo  3 - Scanne le Systeme et repare l image de Windows (SFC + DISM)
+echo  %ESC%[0;31m 2 - Nettoyage Complet et Suppression des Fichier Temporaires et Donnees Profil Navigateur (RESET) !!!!!!!!!! 
 echo.
-echo  4 - Vide le cache de Windows Update
+echo  %ESC%[0;32m 3 - Scanne le Systeme et repare l image de Windows (SFC + DISM)
 echo.
-echo  5 - Ouvrir CMD
+echo  %ESC%[0;32m 4 - Vide le cache de Windows Update
 echo.
-echo  6 - Ouvrir Powershell
+echo  %ESC%[0;32m 5 - Ouvrir CMD
 echo.
-echo  7 - Redemarrer l'ordinateur
+echo  %ESC%[0;32m 6 - Ouvrir Powershell
 echo.
-echo  9 - Quitter
+echo  %ESC%[0;32m 7 - Redemarrer l'ordinateur
+echo.
+echo  %ESC%[0;32m 9 - Quitter
 
 choice /c 123456789 /n
 
@@ -98,9 +101,9 @@ DISM /Online /Cleanup-Image /ScanHealth
 DISM /Online /Cleanup-Image /RestoreHealth
 cls
 echo Windows Reparer avec Succes!
-echo                                        [40;33m ╔═════════════════════════════════════╗
-echo                                        [40;33m ║   Appuyer sur ENTRER pour continuer.║
-echo                                        [40;33m ╚═════════════════════════════════════╝
+echo                                        %ESC%[40;33m ╔═════════════════════════════════════╗
+echo                                        %ESC%[40;33m ║   Appuyer sur ENTRER pour continuer.║
+echo                                        %ESC%[40;33m ╚═════════════════════════════════════╝
 pause >nul
 goto menu
 
@@ -130,13 +133,13 @@ del /s /f /q %temp%\*.* >nul 2>nul
 
 :: Utiliser pour supprimer les anciens fichiers laisses apres la mise a niveau d'une version Windows
 
-echo                                           [40;33m ╔═══════════════════════════════╗
-echo                                           [40;33m ║    Nettoyage, Patientez...    ║
-echo                                           [40;33m ╚═══════════════════════════════╝
+echo                                           %ESC%[40;33m ╔═══════════════════════════════╗
+echo                                           %ESC%[40;33m ║    Nettoyage, Patientez...    ║
+echo                                           %ESC%[40;33m ╚═══════════════════════════════╝
 cleanmgr.exe /autoclean
 del /s /f /q %windir%\temp\*.* >nul 2>nul
 
-echo [Nettoyage] et Optimisation en cours...
+echo [Nettoyage] et Optimisation en cours... && color c
 timeout /t 2 /nobreak >nul
 echo.
 
@@ -224,9 +227,9 @@ netsh winsock reset all >nul 2>nul
 netsh int ip reset >nul 2>nul
 netsh int ip reset all >nul 2>nul
 echo Nettoyage terminer avec Succes!
-echo                                        [40;33m ╔═════════════════════════════════════╗
-echo                                        [40;33m ║   Appuyer sur ENTRER pour continuer.║
-echo                                        [40;33m ╚═════════════════════════════════════╝
+echo                                        %ESC%[40;33m ╔═════════════════════════════════════╗
+echo                                        %ESC%[40;33m ║   Appuyer sur ENTRER pour continuer.║
+echo                                        %ESC%[40;33m ╚═════════════════════════════════════╝
 pause >nul
 echo.
 goto menu
@@ -275,9 +278,9 @@ net start bits >nul 2>nul
 net start cryptsvc >nul 2>nul
 net start wuauserv >nul 2>nul
 echo Cache Windows Update vider avec Succes!
-echo                                        [40;33m ╔═════════════════════════════════════╗
-echo                                        [40;33m ║   Appuyer sur ENTRER pour continuer.║
-echo                                        [40;33m ╚═════════════════════════════════════╝
+echo                                        %ESC%[40;33m ╔═════════════════════════════════════╗
+echo                                        %ESC%[40;33m ║   Appuyer sur ENTRER pour continuer.║
+echo                                        %ESC%[40;33m ╚═════════════════════════════════════╝
 pause /nul
 echo.
 goto menu
