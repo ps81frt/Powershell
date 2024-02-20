@@ -45,4 +45,5 @@ Remove-Item $env:userprofile\desktop\TachesWindows -Recurse
 Write-Host "Exportation des taches Terminer !!!." -ForegroundColor Green
 Write-Host ""
 Write-Host "Le dossier se trouve sur le bureau" -ForegroundColor Red
+Remove-Item .\tachewindows.ps1
 timeout.exe 5
