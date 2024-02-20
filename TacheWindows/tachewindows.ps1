@@ -1,4 +1,4 @@
-$backupPath = "C:\TachesWindows"
+$backupPath = "$env:userprofile\desktop\TachesWindows"
 
 $taskFolders = (Get-ScheduledTask).TaskPath | Where-Object { ($_ -notmatch "Microsoft") } | Select-Object -Unique
 
@@ -38,4 +38,11 @@ foreach ($taskFolder in $taskFolders) {
     }
 }
 
+Compress-Archive -Path "$env:userprofile\desktop\TachesWindows" -DestinationPath "$env:userprofile\desktop\TachesWindows.zip"
+
+Remove-Item $env:userprofile\desktop\TachesWindows -Recurse
+
 Write-Host "Exportation des taches Terminer !!!." -ForegroundColor Green
+Write-Host ""
+Write-Host "Le dossier se trouve sur le bureau" -ForegroundColor Red
+timeout.exe 5
