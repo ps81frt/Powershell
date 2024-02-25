@@ -38,12 +38,12 @@ foreach ($taskFolder in $taskFolders) {
     }
 }
 
-Compress-Archive -Path "$env:userprofile\desktop\TachesWindows" -DestinationPath "$env:userprofile\desktop\TachesWindows.zip"
+Compress-Archive -Path "$env:userprofile\desktop\TachesWindows" -DestinationPath "$env:userprofile\desktop\TachesWindows.zip" -Update
 
 Remove-Item $env:userprofile\desktop\TachesWindows -Recurse
 
 Write-Host "Exportation des taches Terminer !!!." -ForegroundColor Green
 Write-Host ""
 Write-Host "Le dossier se trouve sur le bureau" -ForegroundColor Red
-Remove-Item .\tachewindows.ps1
+Remove-Item -Path tachewindows.ps1
 timeout.exe 5
