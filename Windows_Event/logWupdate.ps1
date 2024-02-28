@@ -16,6 +16,6 @@ Remove-Item -Path $env:userprofile\desktop\report$date -Recurse -Force -Confirm:
 
 Remove-item  -Path $env:userprofile\Desktop\WindowsUpdate.log -Recurse -Force -Confirm:$false
 
-Remove-item -Path $env:userprofile\Desktop\logWupdate.ps1 -Recurse -Force -Confirm:$false
+Remove-item .\logWupdate.ps1 -Recurse -Force -Confirm:$false
 
 exit
