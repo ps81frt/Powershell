@@ -8,14 +8,14 @@ copy "C:\Windows\Logs\DISM\dism.log" $env:userprofile\desktop\report$date
 
 Get-WindowsUpdateLog
 
-copy "~\Desktop\WindowsUpdate.log" $env:userprofile\desktop\report$date
+copy "$env:userprofile\Desktop\WindowsUpdate.log" $env:userprofile\desktop\report$date
 
 Compress-Archive -Path $env:userprofile\desktop\report$date -DestinationPath $env:userprofile\desktop\report$date.zip -Update
 
-Remove-Item $env:userprofile\desktop\report$date -Recurse -Force -Confirm:$false
+Remove-Item -Path $env:userprofile\desktop\report$date -Recurse -Force -Confirm:$false
 
-Remove-item ~\Desktop\WindowsUpdate.log -Recurse -Force -Confirm:$false
+Remove-item  -Path $env:userprofile\Desktop\WindowsUpdate.log -Recurse -Force -Confirm:$false
 
-Remove-item ~\Desktop\logWupdate.ps1 -Recurse -Force -Confirm:$false
+Remove-item -Path $env:userprofile\Desktop\logWupdate.ps1 -Recurse -Force -Confirm:$false
 
 exit
