@@ -1,0 +1,34 @@
+Computer Info
+Get-WindowsArt
+
+#Display Hash Table
+$PCInfo.getenumerator() | Sort-Object -Property name | Format-Table -AutoSize
+Start-Sleep -Seconds 2
+#Writing to Host
+Write-Host "Computer Bios Info" -ForegroundColor Cyan
+Write-Output "Computer Bios Info"
+
+Get-WmiObject -Class Win32_BIOS | Select-Object SMBIOSBIOSVersion,Manufacturer,Name,SerialNumber,Version
+Start-Sleep -Seconds 2
+#Writing to Host
+Write-Host "Computer GPU Info" -ForegroundColor Cyan
+Write-Output "Computer GPU Info"
+
+Get-CimInstance -ClassName Win32_VideoController | Select-Object Caption ,PNPDeviceID, DriverDate, DriverVersion, VideoModeDescription
+Start-Sleep -Seconds 2
+#Writing to Host
+Write-Host "Computer Display Info" -ForegroundColor Cyan
+Write-Output "Computer Display Info"
+
+wmic desktopmonitor get Caption,MonitorType,MonitorManufacturer,Name
+Start-Sleep -Seconds 2
+#Writing to Host
+Write-Host "Computer Disk Info" -ForegroundColor Cyan
+Write-Output "Computer Disk Info"
+
+#Display Drives
+Get-CimInstance win32_logicaldisk -Filter "drivetype=3" -computer $computer |
+Format-Table -Property DeviceID, Volumename, `
+@{Name = "SizeGB"; Expression = { [math]::Round($_.Size / 1GB) } }, `
+@{Name = "FreeGB"; Expression = { [math]::Round($_.Freespace / 1GB, 2) } }, `
+@{Name = "PercentFree"; Expression = { [math]::Round(($_.Freespace / $_.size) * 100, 2) } } 
