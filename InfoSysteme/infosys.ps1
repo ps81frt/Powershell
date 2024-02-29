@@ -150,7 +150,8 @@ Get-CimInstance win32_physicalmemory | Select-Object Manufacturer,PartNumber, Ba
 Start-Sleep -Seconds 2
 &{netsh interface tcp show global ;Get-CimInstance win32_networkadapterconfiguration -computer $computer | Where-Object { $null -ne $_.IPAddress } | Select-Object IPAddress, DefaultIPGateway, DNSServerSearchOrder, IPSubnet, MACAddress, Caption, DHCPEnabled, DHCPServer, DNSDomainSuffixSearchOrder | Format-List }| Out-File $env:USERPROFILE\Desktop\InfoSys\NetworkInfo.txt ;
 Start-Sleep -Seconds 2
-
+#Startup application
+Get-CimInstance Win32_StartupCommand |Select-Object Name, command, Location, User | Format-Table | Out-File $env:USERPROFILE\Desktop\InfoSys\StartupApplication.txt ;
 # List Installed Software Registry
 $Software = "$env:userprofile\desktop\InfoSys\Software"
 
