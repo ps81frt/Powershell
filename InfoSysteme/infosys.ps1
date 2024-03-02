@@ -136,6 +136,7 @@ Start-Sleep -Seconds 2
 Write-Host "Computer Disk Info" -ForegroundColor Cyan
 Write-Output "Computer Disk Info"
 #Display Drives
+wmic diskdrive get caption,SerialNumber,status
 Get-PhysicalDisk |Format-Table -Wrap ; 
 Get-disk |Format-Table -Wrap ; 
 Get-Partition ; 
@@ -145,6 +146,7 @@ Format-Table -Property DeviceID, Volumename, `
 @{Name = "SizeGB"; Expression = { [math]::Round($_.Size / 1GB) } }, `
 @{Name = "FreeGB"; Expression = { [math]::Round($_.Freespace / 1GB, 2) } }, `
 @{Name = "PercentFree"; Expression = { [math]::Round(($_.Freespace / $_.size) * 100, 2) } };
+#Memory
 Get-CimInstance win32_physicalmemory | Select-Object Manufacturer,PartNumber, Banklabel, Configuredclockspeed,Devicelocator, @{Name = 'Capacity';Expression = {"$($_.Capacity / 1gb)" + 'GB'}},Serialnumber | Format-Table -AutoSize 
 } | Out-File $env:USERPROFILE\Desktop\InfoSys\InfoSysGenerale.txt
 Start-Sleep -Seconds 2
@@ -177,7 +179,7 @@ Get-WmiObject Win32_PnPSignedDriver| Select-Object DeviceName, Manufacturer, Dri
 Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0 } | Select-Object ConfigManagerErrorCode,Errortext,Present,Status,StatusInfo,caption | Format-List -GroupBy Status  | Out-File $env:USERPROFILE\Desktop\InfoSys\DriverError.txt
 Compress-Archive -Path "$env:userprofile\desktop\InfoSys" -DestinationPath "$env:userprofile\desktop\InfoSys.zip" -Update
 #Remove-Item -Path infosys.ps1
-#Remove-Item $env:userprofile\desktop\InfoSys -Recurse
+Remove-Item $env:userprofile\desktop\InfoSys -Recurse
 Write-Host "Exportation des taches Terminer !!!." -ForegroundColor Green
 Write-Host ""
 Write-Host "Le dossier se trouve sur le bureau" -ForegroundColor Red
