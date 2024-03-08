@@ -1,5 +1,6 @@
 # Supprime les ancien pilotes devenu obsolète
 
+# Consultation
 $dismOut = dism /online /get-drivers
 
 $Lines = $dismOut | select -Skip 10
@@ -150,7 +151,7 @@ Write-Host "Drivers to remove" -ForegroundColor Red
 
 $ToDel | ft
 
-# removing old drivers
+# Suppressions
 
 foreach ( $item in $ToDel ) {
 
