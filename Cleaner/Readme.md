@@ -2,7 +2,11 @@
 
 Si avertissement lors du téléchargement copier coller tous le contenu dans un fichier .txt et enregistrer le sous le format batch *( .bat )*
 
+## installation
 
+
+Si vous souhaitez l'installer copier coller le fichier creer dans *C:\Program Files* ajouter un raccourci sur le bureau.
+Modifier l'icône, clic droit propriétés et *Changer d'icône...* 
 ______________________________________________________________________________________________________________________________________________
 
 
