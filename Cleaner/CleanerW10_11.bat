@@ -336,7 +336,7 @@ echo %windir%\installer
 echo
 echo
 color b
-echo Le fichier le del og se trouve dans C:\Users\Public\Desktop\Log.txt
+echo Le fichier le de log se trouve dans C:\Users\Public\Desktop\Log.txt
 echo
 echo
 echo
