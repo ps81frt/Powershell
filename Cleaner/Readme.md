@@ -11,3 +11,12 @@ ________________________________________________________________________________
 
 
 ![clean](https://github.com/ps81frt/Powershell/assets/32146568/4924af73-e2b3-433e-8e8f-bb30f1ad076a)
+
+
+______________________________________________________________________________________________________________________________________________
+
+
+Si vous souhaitez l'installer copier coller le fichier creer dans *C:\Program Files* ajouter un raccourci sur le bureau.
+Modifier l'icône, clic droit propriétés et *Changer d'icône...* 
+______________________________________________________________________________________________________________________________________________
+![clean2](https://github.com/ps81frt/Powershell/assets/32146568/253858c6-e9fa-42c5-be5a-f12482916fe1)
