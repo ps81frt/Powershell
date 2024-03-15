@@ -1,3 +1,10 @@
+
+![Sanstitre-ezgif com-optimize](https://github.com/ps81frt/Powershell/assets/32146568/1af1037a-26b0-463e-a660-7d42cba1a15d)
+
+
+
+
+
 # Nettoyeur Personnel pour Windows 10 et 11.
 
 Si avertissement lors du téléchargement copier coller tous le contenu dans un fichier .txt et enregistrer le sous le format batch *( .bat )*
