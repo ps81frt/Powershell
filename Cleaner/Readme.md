@@ -19,4 +19,10 @@ ________________________________________________________________________________
 Si vous souhaitez l'installer copier coller le fichier creer dans *C:\Program Files* ajouter un raccourci sur le bureau.
 Modifier l'icône, clic droit propriétés et *Changer d'icône...* 
 ______________________________________________________________________________________________________________________________________________
+
+![clean3](https://github.com/ps81frt/Powershell/assets/32146568/b0a17691-8c9a-4faa-88b3-8516c69da603)
+
+## Avec icône
+
 ![clean2](https://github.com/ps81frt/Powershell/assets/32146568/253858c6-e9fa-42c5-be5a-f12482916fe1)
+
