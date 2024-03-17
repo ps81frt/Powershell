@@ -150,7 +150,11 @@ Format-Table -Property DeviceID, Volumename, `
 Get-CimInstance win32_physicalmemory | Select-Object Manufacturer,PartNumber, Banklabel, Configuredclockspeed,Devicelocator, @{Name = 'Capacity';Expression = {"$($_.Capacity / 1gb)" + 'GB'}},Serialnumber | Format-Table -AutoSize 
 } | Out-File $env:USERPROFILE\Desktop\InfoSys\InfoSysGenerale.txt
 Start-Sleep -Seconds 2
-&{netsh interface tcp show global ;Get-CimInstance win32_networkadapterconfiguration -computer $computer | Where-Object { $null -ne $_.IPAddress } | Select-Object IPAddress, DefaultIPGateway, DNSServerSearchOrder, IPSubnet, MACAddress, Caption, DHCPEnabled, DHCPServer, DNSDomainSuffixSearchOrder | Format-List }| Out-File $env:USERPROFILE\Desktop\InfoSys\NetworkInfo.txt ;
+$Network ="$env:USERPROFILE\Desktop\InfoSys\Network"
+New-Item -ItemType Directory -Path $Network
+&{netsh interface tcp show global ;Get-CimInstance win32_networkadapterconfiguration -computer $computer | Where-Object { $null -ne $_.IPAddress } | Select-Object IPAddress, DefaultIPGateway, DNSServerSearchOrder, IPSubnet, MACAddress, Caption, DHCPEnabled, DHCPServer, DNSDomainSuffixSearchOrder | Format-List }| Out-File $Network\NetworkInfo.txt ;
+netsh wlan show wlanreport
+
 Start-Sleep -Seconds 2
 #Startup application
 Get-CimInstance Win32_StartupCommand |Select-Object Name, command, Location, User | Format-Table | Out-File $env:USERPROFILE\Desktop\InfoSys\StartupApplication.txt ;
@@ -167,17 +171,38 @@ Get-SoftHKCU | Out-File $env:USERPROFILE\Desktop\InfoSys\Software\InstalledSoftw
 
 Write-Host "Software Installed Registry HKCU" -ForegroundColor Cyan
 Write-Output "Software Installed Registry HKCU"
-
+# List services
+$Services = "$env:userprofile\desktop\InfoSys\Services"
+New-Item -ItemType Directory -Path  $Services
+Get-Service | sort-Object name | Format-Table name,status,Description | Out-File $env:USERPROFILE\Desktop\InfoSys\Services\Services.txt ;
+Write-Host "Liste des services" -ForegroundColor Cyan
+Write-Output "Services Windows"
+# Defender
+$Defender = "$env:userprofile\desktop\InfoSys\Defender"
+New-Item -ItemType Directory -Path $Defender
+get-mpThreatDetection | Sort-Object RemediationTime -Descending | Select-Object RemediationTime,ProcessName,Resources | Format-List | Out-File $env:USERPROFILE\Desktop\InfoSys\Defender\Detection.txt ;
+Get-MpThreat | Sort-Object DidThreatExecute -Descending | Select-Object ThreatName,SeverityID,DidThreatExecute,IsActive | Out-File $env:USERPROFILE\Desktop\InfoSys\Defender\StatusDetection.txt ;
+Get-CimInstance -Namespace root/SecurityCenter2 -ClassName AntivirusProduct | Out-File $env:USERPROFILE\Desktop\InfoSys\Defender\StatusAntiVirus.txt ;
+# Windows Update Logs
+$Wlogs = "$env:USERPROFILE\Desktop\InfoSys\Wlogs"
+New-Item -ItemType Directory -Path $Wlogs
+Get-WindowsUpdateLog | Format-List ;
+Get-WmiObject -Class win32_reliabilityRecords -Filter "SourceName='Microsoft-Windows-WindowsUpdateClient'" | Where-Object { $_.message -match "Erreur" } | Select-Object timegenerated, @{LABEL = “Échec de l'installation”; EXPRESSION = { $_.productname }}| Format-Table -AutoSize -Wrap | Out-File $Wlogs\WindowsUpdateErreur.txt ;
 # List Installed Software Event Log
 Get-WinEvent -ProviderName msiinstaller | Where-Object id -eq 1033 | Select-Object timecreated,message | Format-List * |  Out-File $env:USERPROFILE\Desktop\InfoSys\Software\InstalledSoftwareWinEvent.txt ;
 #Writing to Host
+Move-Item "C:\ProgramData\Microsoft\Windows\WlanReport\wlan-report-*" $Network
+$Pilotes = "$env:USERPROFILE\Desktop\InfoSys\Pilotes"
+New-Item -ItemType Directory -Path $Pilotes
+Move-Item -Path $env:USERPROFILE\Desktop\WindowsUpdate.log $Wlogs
 Write-Host "Computer Full DriverInfo" -ForegroundColor Cyan
 Write-Output "Computer Full DriverInfo"
-Get-PnpDevice -PresentOnly | Select-Object -Property Status,Friendlyname,InstanceId | Format-Table -GroupBy Status | Out-File $env:USERPROFILE\Desktop\InfoSys\DriverVendorID.txt ; 
-Get-CimInstance Win32_PnPEntity | Select-Object Status, Class, FriendlyName, instanceId | Format-Table -GroupBy Status | Out-File $env:USERPROFILE\Desktop\InfoSys\DriverStatus.txt ; 
-Get-WmiObject Win32_PnPSignedDriver| Select-Object DeviceName, Manufacturer, DriverVersion | Out-File $env:USERPROFILE\Desktop\InfoSys\DriverVersion.txt ;  
-Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0 } | Select-Object ConfigManagerErrorCode,Errortext,Present,Status,StatusInfo,caption | Format-List -GroupBy Status  | Out-File $env:USERPROFILE\Desktop\InfoSys\DriverError.txt
+Get-PnpDevice -PresentOnly | Select-Object -Property Status,Friendlyname,InstanceId | Format-Table -GroupBy Status | Out-File $Pilotes\DriverVendorID.txt ; 
+Get-CimInstance Win32_PnPEntity | Select-Object Status, Class, FriendlyName, instanceId | Format-Table -GroupBy Status | Out-File $Pilotes\DriverStatus.txt ; 
+Get-WmiObject Win32_PnPSignedDriver| Select-Object DeviceName, Manufacturer, DriverVersion | Out-File $Pilotes\DriverVersion.txt ;  
+Get-WmiObject -Class Win32_PnpEntity -ComputerName localhost -Namespace Root\CIMV2 | Where-Object {$_.ConfigManagerErrorCode -gt 0 } | Select-Object ConfigManagerErrorCode,Errortext,Present,Status,StatusInfo,caption | Format-List -GroupBy Status  | Out-File $Pilotes\DriverError.txt
 Compress-Archive -Path "$env:userprofile\desktop\InfoSys" -DestinationPath "$env:userprofile\desktop\InfoSys.zip" -Update
+
 #Remove-Item -Path infosys.ps1
 Remove-Item $env:userprofile\desktop\InfoSys -Recurse
 Write-Host "Exportation des taches Terminer !!!." -ForegroundColor Green
@@ -185,3 +210,5 @@ Write-Host ""
 Write-Host "Le dossier se trouve sur le bureau" -ForegroundColor Red
 #Clear-Host
 timeout.exe 5
+Exit
+
