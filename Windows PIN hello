@@ -7,10 +7,15 @@ Regarder si wondows est installé.
 
 BCDEDIT
 
-Si sur le lecteur C: entrer:
+Si sur le lecteur C: entrer ces commandes
 
 icacls C:\Windows\ServiceProfiles\LocalService\AppData\Local\Microsoft\Ngc /T /Q /C /RESET
 
 Renommer l'ancien fichier:
 
 Ren C:\Windows\ServiceProfiles\LocalService\AppData\Local\Microsoft\Ngc Ngc.old
+
+
+redémarrer.
+
+:)
