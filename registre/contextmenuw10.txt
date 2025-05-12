@@ -1,0 +1,15 @@
+
+#Desactiver le menu contextuel W11 pour ce lui de W10
+
+reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+
+#Activer le menu contextuel W11
+
+reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
+
+#Notepad classic
+
+dism /Online /add-Capability /CapabilityName:Microsoft.Windows.Notepad.System~~~~0.0.1.0
+
+
+

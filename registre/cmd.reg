@@ -1,0 +1,62 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\normal_cmd]
+@="@shell32.dll,-8506"
+"Icon"="cmd.exe,0"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\normal_cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\normal_cmd]
+@="@shell32.dll,-8506"
+"Icon"="cmd.exe,0"
+
+[HKEY_CLASSES_ROOT\Directory\shell\normal_cmd\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+; #####################################################################
+; #####################################################################
+; #####################################################################
+; #####################################################################
+; #####################################################################
+
+
+[-HKEY_CLASSES_ROOT\Directory\shell\runas]
+
+[HKEY_CLASSES_ROOT\Directory\shell\runas]
+@="Ouvrir une fenetre de commande administrateur ici"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\runas\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+[-HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas]
+@="Ouvrir une fenetre de commande administrateur ici"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\runas\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+
+
+[-HKEY_CLASSES_ROOT\Drive\shell\runas]
+
+[HKEY_CLASSES_ROOT\Drive\shell\runas]
+@="Ouvrir une fenetre de commande administrateur ici"
+"HasLUAShield"=""
+
+[HKEY_CLASSES_ROOT\Drive\shell\runas\command]
+@="cmd.exe /s /k pushd \"%V\""
+
+
+
+[-HKEY_CLASSES_ROOT\LibraryFolder\background\shell\runas]
+
+[HKEY_CLASSES_ROOT\LibraryFolder\background\shell\runas]
+"HasLUAShield"=""
+@="Ouvrir une fenetre de commande administrateur ici"
+
+[HKEY_CLASSES_ROOT\LibraryFolder\background\shell\runas\command]
+@="cmd.exe /s /k pushd \"%V\""

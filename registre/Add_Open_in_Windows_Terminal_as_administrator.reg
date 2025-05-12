@@ -1,0 +1,20 @@
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\Directory\shell\OuvrirAdministrateur]
+
+[HKEY_CLASSES_ROOT\Directory\shell\OuvrirAdministrateur]
+"HasLUAShield"=""
+"MUIVerb"="Ouvrir dans le Terminal Administrateur"
+"Extended"=-
+
+[HKEY_CLASSES_ROOT\Directory\shell\OuvrirAdministrateur\command]
+@="powershell.exe -WindowStyle Hidden \"Start-Process -Verb RunAs cmd.exe -ArgumentList @('/c','start wt.exe','-d','\"\"\"%V\\.\"\"\"')\""
+
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OuvrirAdministrateur]
+"HasLUAShield"=""
+"MUIVerb"="Ouvrir dans le Terminal Administrateurr"
+"Extended"=-
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\OuvrirAdministrateur\command]
+@="powershell.exe -WindowStyle Hidden \"Start-Process -Verb RunAs cmd.exe -ArgumentList @('/c','start wt.exe','-d','\"\"\"%V\\.\"\"\"')\""
