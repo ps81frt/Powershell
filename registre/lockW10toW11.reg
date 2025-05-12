@@ -1,0 +1,6 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows]
+"TargetReleaseVersion" =dword:1
+"TargetReleaseVersionInfo"="22H2"
+"ProductVersion"= "Windows 10 Professionnel"
