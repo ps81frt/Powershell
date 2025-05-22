@@ -1,0 +1,1 @@
+Get-WuaHistory | Format-Table | Out-String -Width 400 | Out-File -Encoding utf8 "$env:userprofile\Desktop\wuhisto.txt"
