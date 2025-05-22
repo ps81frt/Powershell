@@ -55,12 +55,14 @@ $PCInfo = @{
 #Display Hash Table
 $PCInfo.getenumerator() | Sort-Object -Property name | Format-Table -AutoSize;
 Start-Sleep -Seconds 2;
+
 #Writing to Host
 Write-Host "Computer Bios Info" -ForegroundColor Cyan;
 Write-Output "Computer Bios Info";
-
+Start-Sleep -Seconds 2;
 Get-WmiObject -Class Win32_BIOS | Select-Object SMBIOSBIOSVersion,Manufacturer,Name,SerialNumber,Version;
 Start-Sleep -Seconds 2;
+
 #Writing to Host
 Write-Host "Computer GPU Info" -ForegroundColor Cyan;
 Write-Output "Computer GPU Info";
@@ -71,7 +73,9 @@ Start-Sleep -Seconds 2;
 Write-Host "Computer Display Info" -ForegroundColor Cyan;
 Write-Output "Computer Display Info";
 
-wmic desktopmonitor get Caption,MonitorType,MonitorManufacturer,Name;
+Get-WmiObject win32_desktopmonitor;
+Get-CimInstance -Namespace root\wmi -ClassName WmiMonitorBasicDisplayParams;
+Get-WmiObject win32_videocontroller | Select-Object caption, CurrentHorizontalResolution, CurrentVerticalResolution, MaxRefreshRate, MinRefreshRate, currentrefreshrate
 Start-Sleep -Seconds 2;
 #Writing to Host
 Write-Host "Computer Disk Info" -ForegroundColor Cyan;
@@ -86,6 +90,7 @@ Format-Table -Property DeviceID, Volumename, `
 
 
 #Display Drives
+Get-Volume |Format-Table -Wrap ;
 Get-CimInstance win32_logicaldisk -Filter "drivetype=3" -computer $computer |
 Format-Table -Property DeviceID, Volumename, `
 @{Name = "SizeGB"; Expression = { [math]::Round($_.Size / 1GB) } }, `
@@ -100,4 +105,5 @@ Select-Object IPAddress, DefaultIPGateway, DNSServerSearchOrder, IPSubnet, MACAd
 Format-List
 
 }
-&{Get-WindowsArt ; Get-Infosys}
+&{Get-WindowsArt ; Get-Infosys} | Out-File $env:USERPROFILE\Desktop\ii.txt
+notepad.exe ii.txt
