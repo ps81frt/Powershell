@@ -6,7 +6,7 @@ Mise a jours de Powershell
         dotnet tool update --global PowerShell
         $PSVersionTable
 
-Mise a jours de Powershell 7
+Installation & Mise a jours de Powershell 7
 ------------------------------------------------------------------------------------------------------------------------------------------
 
         $PSVersionTable.PSVersion
