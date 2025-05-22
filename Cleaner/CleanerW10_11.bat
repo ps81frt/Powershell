@@ -45,7 +45,7 @@ if '%errorlevel%' NEQ '0' (
 
 @echo off
 color 1E
-Title Cleanner
+Title Cleaner
 echo Ceci va arreter le service de mise a jours Windows "Fichier de mise a jour"
 echo Etes vous sur de vouloir nettoyer et supprimer les fichiers ?
 Pause
