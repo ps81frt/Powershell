@@ -41,3 +41,4 @@ $history |
 Where-Object {![String]::IsNullOrWhiteSpace($_.title)} |
 Select-Object Result, Date, Title, SupportUrl, Product, UpdateId, RevisionNumber
 }
+Get-WuaHistory | Format-List
